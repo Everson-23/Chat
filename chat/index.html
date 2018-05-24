@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Chat Concessionária</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Chat</a> 
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Conversar</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Chat</a></li>
+      </ul>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+     <div class="row">
+    
+  </div>
+    </div>
+    <div class="modal-footer">
+		<form class="col s12">
+      <div class="row">
+        <div class="input-field col s6" id="nome-div">
+          <i class="material-icons prefix">mode_edit</i>
+         <input type="text" id="mensagem" placeholder="Digite a sua mensagem">
+            </div>
+      </div>
+    </form>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons" style="color: #E00B0E;">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Chat</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Primeiro Chat da Concessionária B</h5>
+        </div>
+     
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="bg.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Conscessionária</h5>
+         
+
+		  </div>
+        </div>
+        <div class="col l3 s12">
+         
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+     Feito por <a class="brown-text text-lighten-3" href="http://materializecss.com">O plagiador de sites</a>
+      </div>
+    </div>
+  </footer>
+
+ <script>
+        websocket = new WebSocket("ws://localhost:9000/")
+            websocket.send(JSON.stringify({
+                nome: nome,
+                mensagem: $('#mensagem').val()
+            }));
+            $('#mensagem').focus();
+            $('#mensagem').val('');
+            return false;
+        });
+ 
+        websocket.onmessage = function(evt) {
+            $('#mensagens').append($('<li>').html(evt.data));
+        };
+ 
+        websocket.onerror = function(evt) {
+            $('#mensagens').append($('<li>')
+				.text('<span style="color: red;">ERROR:</span>'
+						+evt.data));
+        };
+    </script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="chat/server.js"</script>
+
+  </body>
+</html>
